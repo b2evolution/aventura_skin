@@ -33,6 +33,12 @@ $params = array_merge( array(
 	?>
 
 	<h2 class="bTitle"><?php $Item->title(); ?></h2>
+	
+	<?php
+	if( ! $Item->is_intro() )
+	{
+	?>
+	
 	<div class="bSmallHead">
 	<?php
 		$Item->issue_date( array(
@@ -64,6 +70,8 @@ $params = array_merge( array(
 	</div>
 
 	<?php
+	}
+	
 		// ---------------------- POST CONTENT INCLUDED HERE ----------------------
 		skin_include( '_item_content.inc.php', $params );
 		// Note: You can customize the default item feedback by copying the generic
@@ -72,16 +80,21 @@ $params = array_merge( array(
 	?>
 
 	<?php
+		if( ! $Item->is_intro() )
+		{
 		// List all tags attached to this post:
 		$Item->tags( array(
 				'before' =>         '<div class="">'.T_('Tags').': ',
 				'after' =>          '</div>',
 				'separator' =>      ', ',
 			) );
+		}
 	?>
 
 	<div class="bSmallPrint">
 		<?php
+		if( ! $Item->is_intro() )
+		{
 			// Link to comments, trackbacks, etc.:
 			$Item->feedback_link( array(
 							'type' => 'feedbacks',
@@ -93,15 +106,18 @@ $params = array_merge( array(
 							'link_title' => '#',
 							'use_popup' => false,
 						) );
+		}
 
 			$Item->edit_link( array( // Link to backoffice for editing
 					'before'    => '',
 					'after'     => ' &bull; ',
 				) );
-
+		if( ! $Item->is_intro() )
+		{
 			$Item->permanent_link( array(
 					'text' => '<img src="img/page.gif" alt="Permalink" width="9" height="12" class="middle" />',
 				) );
+		}
 		?>
 	</div>
 	<img src="../../rsc/img/blank.gif" width="1" height="1" alt="" />

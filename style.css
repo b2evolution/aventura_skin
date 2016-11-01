@@ -200,6 +200,10 @@ div.action_messages {
 	background-repeat: no-repeat;
 	background-position: 5px 3px;	/* border: 1px solid #78a; */
 }
+.featured_post
+{
+	background-image: none;
+}
 .bSmallHead {
 	padding: 5px 0 7px;
 	font-size: 84%;
